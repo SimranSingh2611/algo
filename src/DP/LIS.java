@@ -3,6 +3,7 @@ package DP;
 /**
  * Given an unsorted array of integers, find the length of longest increasing subsequence
  * https://leetcode.com/problems/longest-increasing-subsequence/
+ * https://www.hackerrank.com/contests/master/challenges/longest-increasing-subsequent
  */
 public class LIS {
     /*

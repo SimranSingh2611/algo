@@ -1,6 +1,7 @@
 package DP;
 
 /**
+ * Bad Neighbors
  * https://community.topcoder.com/stat?c=problem_statement&pm=2402&rd=5009
  */
 public class BadNeighbors {
@@ -14,6 +15,17 @@ public class BadNeighbors {
         return array;
     }
 
+/*
+    Problem arises when we are checking the last Nth neighbor,
+    he has limitations from both N-1st and first neighbor. It might
+    be worth it taking Nth element instead of first, but note that
+    simple swapping of first and Nth won't work:
+    {5, 4, 1, 1, 10}
+    Going from left to right gives us 5 + 1
+    Swapping Nth and first gives us  10 + 1
+    But the best sum is 4 + 10, so we need to recompute the whole thing.
+    Hence, we will compute from left to right and from right to left.
+*/
     public static int maxDonations(int[] donations) {
         return Math.max(oneWayDonations(donations), oneWayDonations(revert(donations)));
     }
@@ -46,6 +58,8 @@ public class BadNeighbors {
                 }
             }
             if (dp[i] > result) {
+                // Corner case when them best sum is not in the last two dp cells:
+                // {5, 1, 1}
                 result = dp[i];
             }
         }

@@ -15,7 +15,7 @@ public class CourseSchedule {
         int[] visited = new int[numCourses];
         Map<Integer, List<Integer>> dependencies = new HashMap<Integer, List<Integer>>();
         for(int i = 0; i < numCourses; i++) {
-            dependencies.put(i, new ArrayList<Integer>());
+            dependencies.put(i, new ArrayList<>());
             visited[i] = 0;
         }
         for(int i = 0; i < prerequisites.length; i++) {
@@ -23,7 +23,7 @@ public class CourseSchedule {
             cur.add(prerequisites[i][0]);
             dependencies.put(prerequisites[i][1], cur);
         }
-        List<Integer> sorted = new ArrayList<Integer>();
+        List<Integer> sorted = new ArrayList<>();
         int[] empty = {};
 
         // We don't know the entry points of this graph so we check all        

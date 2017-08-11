@@ -1,4 +1,4 @@
-package search.warmup;
+package warmup;
 /**
  * Given an array of integers that is already sorted in ascending order, find two numbers such that they add up to a specific target number.
  * There is one clarification that you might want to know:
@@ -7,6 +7,7 @@ package search.warmup;
  */
 public class SortedTwoSum {
     public int[] twoSum(int[] nums, int target) {
+        // Initialize variables upon creation, saves time
         int i1 = 0, i2 = nums.length - 1;
         while(i1 < i2) {
             int sum = nums[i1] + nums[i2];
@@ -15,6 +16,7 @@ public class SortedTwoSum {
             else if(sum > target)
                 i2--;
             else
+                // Construct arrays in place whenever possible, saves you time
                 return new int[]{i1 + 1, i2 + 1};
         }
         return new int[]{-1, -1};

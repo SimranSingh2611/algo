@@ -12,6 +12,7 @@ public class BinarySearch {
         int begin = 0, end = nums.length - 1;
         while(begin < end) {
             // Be careful - we need ceiling here to avoid potential infinite loop
+            // By default double to int casting in Java rounds by truncating (IEEE 754 round-toward-zero)
             int mid = (int) Math.ceil( (begin - end)/2.0 ) + end;
             if(nums[mid] > target)
                 end = mid - 1;
@@ -24,5 +25,8 @@ public class BinarySearch {
             return begin + 1;
         else
             return begin;
+    }
+    public static void main(String[] args) {
+        System.out.println((int) 11.5);
     }
 }

@@ -26,7 +26,4 @@ public class BinarySearch {
         else
             return begin;
     }
-    public static void main(String[] args) {
-        System.out.println((int) 11.5);
-    }
 }

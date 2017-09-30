@@ -32,7 +32,7 @@ public class Parser {
             } else if(!precedence.containsKey(token)) {
                 outputQueue.add(token);
             } else {
-                while(operatorStack.size() > 0 && precedence.get(operatorStack.getFirst()) >= precedence.get(token) ) {
+                while(operatorStack.size() > 0 && precedence.get(operatorStack.getFirst()) > precedence.get(token) ) {
                     outputQueue.add(operatorStack.removeFirst());
                 }
                 operatorStack.addFirst(token);

@@ -11,20 +11,17 @@ public class PersistentStack {
         long mass;
         Node next;
 
-        public Node(long mass) {
+        // Functional persistence
+        public Node(long mass, Node next) {
             this.mass = mass;
-            this.cumMass = mass;
-            this.next = null;
+            this.cumMass = mass + ( next == null ? 0 : next.cumMass );
+            this.next = next;
         }
     }
 
     public static Node versionedPush(Node head, long mass) {
-        Node newHead = new Node(mass);
-        newHead.cumMass = newHead.mass + (head == null ? 0 : head.cumMass);
-        newHead.next = head;
-
         // Returning new version of the stack
-        return newHead;
+        return new Node(mass, head);
     }
 
     public static Node versionedPop(Node head) {

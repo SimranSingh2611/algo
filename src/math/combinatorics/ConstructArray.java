@@ -13,9 +13,8 @@ import java.util.Scanner;
  */
 public class ConstructArray {
 
-    static long countArray(int n, int kk, int x) {
+    static long countArray(int n, int k, int x) {
         long total = 1;
-        long k = (long) kk;
         long xs = x == 1 ? 1 : 0;
         for(int i = 0; i < n - 2; i++) {
             long temp = total;

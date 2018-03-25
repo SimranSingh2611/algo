@@ -20,7 +20,8 @@ public class DutchNationalFlag {
 
         for(int mid = left; mid <= right; mid++) {
             if(nums[mid] == 0) {
-                swap(nums, left++, mid--);
+                // left is never greater than mid
+                swap(nums, left++, mid);
             } else if(nums[mid] == 2) {
                 swap(nums, right--, mid--);
             }

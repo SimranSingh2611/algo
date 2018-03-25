@@ -6,7 +6,7 @@ import java.util.List;
 import java.util.Map;
 
 /*
- * Classic topological sorting problem
+ * Classic topological sorting problem, "white-grey-black" DFS solution
  * https://leetcode.com/problems/course-schedule-ii/
  */
 

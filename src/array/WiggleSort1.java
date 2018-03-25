@@ -7,9 +7,9 @@ import java.util.Arrays;
  */
 public class WiggleSort1 {
     private static void swap(int[] nums, int i, int j) {
-        nums[i] ^= nums[j];
-        nums[j] ^= nums[i];
-        nums[i] ^= nums[j];
+        int temp = nums[i];
+        nums[i] = nums[j];
+        nums[j] = temp;
     }
 
     // Fastest way, no sorting needed, in-place and linear in time

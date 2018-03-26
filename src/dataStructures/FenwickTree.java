@@ -1,27 +1,45 @@
 package dataStructures;
 
-public class FenwickTree {
-    private int[] partialSum;
-    public int n;
+/*
+* Sum on range problem solved by Fenwick Tree data structure
+* https://leetcode.com/problems/range-sum-query-mutable/
+ */
 
-    public FenwickTree(int n) {
-        this.n = n;
-        partialSum = new int[n + 1];
-    }
+class FenwickTree {
+    private int[] values;
+    private int n;
+    private int[] parts;
 
-    public void update(int index, int delta) {
-        while (index <= n) {
-            partialSum[index] += delta;
-            index = index | (index + 1);
+    public FenwickTree(int[] nums) {
+        n = nums.length;
+        values = new int[n];
+        parts = new int[n];
+
+        for(int i = 0; i < n; i++) {
+            update(i, nums[i]);
         }
     }
 
-    public int query(int index) {
+    public void update(int i, int val) {
+        int delta = val - values[i];
+        // don't forget to update the original array!!!
+        values[i] = val;
+        while(i < n) {
+            parts[i] += delta;
+            i = i | (i + 1);
+        }
+    }
+
+    private int sumRange(int i) {
         int sum = 0;
-        while (index > 0) {
-            sum += partialSum[index];
-            index = (index & (index + 1)) - 1;
+        while(i >= 0) {
+            sum += parts[i];
+            i = (i & (i + 1)) - 1;
         }
         return sum;
+    }
+
+    public int sumRange(int i, int j) {
+        return sumRange(j) - sumRange(i - 1);
     }
 }

@@ -1,4 +1,4 @@
-package binarySearch;
+package search.binarySearch;
 
 /*
  * Classic binary search, but on predicate

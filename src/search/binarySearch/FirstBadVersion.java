@@ -1,4 +1,4 @@
-package binarySearch;
+package search.binarySearch;
 
 /**
  * https://leetcode.com/problems/first-bad-version

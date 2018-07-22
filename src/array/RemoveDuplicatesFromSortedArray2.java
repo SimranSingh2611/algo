@@ -1,7 +1,7 @@
 package array;
 
 /*
-* Remove duplicates from a sorted array in-place
+* Remove duplicates from a sorted array in-place, max 2 duplicates are allowed
 * https://leetcode.com/problems/remove-duplicates-from-sorted-array-ii/
  */
 public class RemoveDuplicatesFromSortedArray2 {

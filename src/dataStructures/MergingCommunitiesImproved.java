@@ -9,12 +9,10 @@ import java.util.*;
  */
 public class MergingCommunitiesImproved {
     public static class Node {
-        public int value;
         public int size;
         public Node parent;
 
-        public Node(int value) {
-            this.value = value;
+        public Node() {
             parent = null;
             size = 1;
         }
@@ -26,6 +24,18 @@ public class MergingCommunitiesImproved {
         return n.parent;
     }
 
+    public static boolean merge(Node n1, Node n2) {
+        Node p1 = getParent(n1);
+        Node p2 = getParent(n2);
+
+        if(p1 != p2) {
+            p2.parent = p1;
+            p1.size += p2.size;
+            return true;
+        }
+        return false;
+    }
+
     public static void main(String[] args) throws IOException {
         BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
         String[] nq = br.readLine().split(" ");
@@ -33,7 +43,7 @@ public class MergingCommunitiesImproved {
         int q = Integer.parseInt(nq[1]);
         Map<Integer, Node> map = new HashMap<Integer, Node>();
         for(int i = 0; i < n; i++) {
-            Node node = new Node(i + 1);
+            Node node = new Node();
             map.put(i + 1, node);
         }
 
@@ -43,13 +53,7 @@ public class MergingCommunitiesImproved {
                 int index1 = Integer.parseInt(query[1]);
                 int index2 = Integer.parseInt(query[2]);
 
-                Node n1 = getParent(map.get(index1));
-                Node n2 = getParent(map.get(index2));
-
-                if(n2 != n1) {
-                    n2.parent = n1;
-                    n1.size += n2.size;
-                }
+                merge(map.get(index1), map.get(index2));
             } else {
                 int index = Integer.parseInt(query[1]);
                 Node n1 = map.get(index);
